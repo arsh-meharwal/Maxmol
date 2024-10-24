@@ -2,8 +2,10 @@
 
 Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I designed for famous Youtuber - [Microwave nagal](https://www.youtube.com/@MicrowaveNagal) to enable him to sell his products online all over India. Maxmol integrates several essential functionalities like Wishlist, Cart Management, Order Tracking, Razorpay Payment Gateway, and OTP-based Authentication. This README provides an overview of the app’s features and explains its functionality in detail.
 
-![Screenshot_1729232182](https://github.com/user-attachments/assets/95a8f80f-8c34-4e8d-bf8b-d86c0c9a3849)
-![Screenshot_1729262692](https://github.com/user-attachments/assets/25a5d8e2-61a2-4f9a-a4a2-d675417c7d36)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/95a8f80f-8c34-4e8d-bf8b-d86c0c9a3849" alt="Screenshot_1" width="300"/>
+  <img src="https://github.com/user-attachments/assets/25a5d8e2-61a2-4f9a-a4a2-d675417c7d36" alt="Screenshot_2" width="300"/>
+</p>
 
 
 # Features
