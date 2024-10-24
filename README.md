@@ -1,4 +1,4 @@
-## Maxmol E-Commerce Mobile App
+# Maxmol E-Commerce Mobile App
 
 Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I designed for famous Youtuber - [Microwave nagal](https://www.youtube.com/@MicrowaveNagal) to enable him to sell his products online all over India. Maxmol integrates several essential functionalities like Wishlist, Cart Management, Order Tracking, Razorpay Payment Gateway, and OTP-based Authentication. This README provides an overview of the app’s features and explains its functionality in detail.
 
@@ -14,7 +14,7 @@ Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I
 </p>
 
 
-# Features
+## Features
 
 	1.	User Authentication (OTP Login)
 	2.	Product Browsing & Search
@@ -26,7 +26,7 @@ Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I
 	8.	Search History
  
 
-# 1. User Authentication (Login via OTP)
+## 1. User Authentication (Login via OTP)
 
 The app uses an OTP-based authentication system, allowing users to log in securely without needing a password.
 
@@ -39,9 +39,9 @@ How It Works:
 
 This login mechanism ensures secure and convenient access, removing the need for traditional username-password credentials. I used Appwrite to configure this functionality in my app
 
-# Code - Components/LoginComponents.js
+**Code - Components/LoginComponents.js**
 
-# 2. Product Browsing & Search
+## 2. Product Browsing & Search
 
 Users can browse through various product categories and search for specific items.
 
@@ -51,10 +51,10 @@ Key Functionalities:
 	•	Category-based Browsing: Products are categorized for easier navigation (e.g., Electronics, Fashion, Home Decor).
 	•	Product Details: Each product has its dedicated details page where users can view images, descriptions, pricing, and availability.
 
-# Code - App/(tabs)/home.js
-# Code - Components/Navbar.js
+**Code - App/(tabs)/home.js**
+**Code - Components/Navbar.js**
 
-# 3. Wishlist Management
+## 3. Wishlist Management
 
 Maxmol allows users to add products to their Wishlist for future purchases.
 
@@ -64,11 +64,11 @@ Key Functionalities:
 	•	View Wishlist: The Wishlist page displays all saved items, allowing users to easily access products they are interested in.
 	•	Remove from Wishlist: Users can remove products from the Wishlist with a simple click.
 
-# Code - App/(tabs)/wishlist.js
+**Code - App/(tabs)/wishlist.js**
 
 This feature helps users keep track of products they may want to purchase later.
 
-# 4. Cart Management
+## 4. Cart Management
 
 The Cart is where users add products they are ready to purchase.
 
@@ -82,9 +82,9 @@ Key Functionalities:
 
 The cart ensures that users can manage their purchases easily before checking out.
 
-# Code - App/(tabs)/cart.js
+**Code - App/(tabs)/cart.js**
 
-# 5. Order Tracking
+## 5. Order Tracking
 
 Once users have placed an order, they can track its status in real time.
 
@@ -96,9 +96,9 @@ Key Functionalities:
 
 Order tracking provides transparency, ensuring users are informed about the current state of their purchase.
 
-# Code - App/(tabs)/profile.js
+**Code - App/(tabs)/profile.js**
 
-# 6. Online Payment (Razorpay Integration)
+## 6. Online Payment (Razorpay Integration)
 
 Maxmol supports secure online payments through Razorpay, enabling users to complete purchases with ease.
 
@@ -110,9 +110,9 @@ How It Works:
 
 The Razorpay integration ensures fast, secure, and reliable payment processing, giving users various payment methods to choose from.
 
-Code - App/(screens)/paymentSelect.js
+**Code - App/(screens)/paymentSelect.js**
 
-7. User Profile & Order History
+## 7. User Profile & Order History
 
 Each user has access to their profile, where they can manage their account details and view their past orders.
 
