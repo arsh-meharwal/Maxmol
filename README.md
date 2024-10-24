@@ -1,8 +1,12 @@
-## Maxmol E-Commerce Android/IoS App
+## Maxmol E-Commerce Mobile App
 
 Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I designed for famous Youtuber - [Microwave nagal](https://www.youtube.com/@MicrowaveNagal) to enable him to sell his products online all over India. Maxmol integrates several essential functionalities like Wishlist, Cart Management, Order Tracking, Razorpay Payment Gateway, and OTP-based Authentication. This README provides an overview of the app’s features and explains its functionality in detail.
 
-Features
+![Screenshot_1729232182](https://github.com/user-attachments/assets/95a8f80f-8c34-4e8d-bf8b-d86c0c9a3849)
+![Screenshot_1729262692](https://github.com/user-attachments/assets/25a5d8e2-61a2-4f9a-a4a2-d675417c7d36)
+
+
+# Features
 
 	1.	User Authentication (OTP Login)
 	2.	Product Browsing & Search
@@ -12,7 +16,7 @@ Features
 	6.	Online Payment via Razorpay
 	7.	User Profile & Order History
 
-1. User Authentication (Login via OTP)
+# 1. User Authentication (Login via OTP)
 
 The app uses an OTP-based authentication system, allowing users to log in securely without needing a password.
 
@@ -23,9 +27,9 @@ How It Works:
 	•	Once the user enters the correct OTP, they are authenticated and logged in.
 	•	If OTP verification is successful, the app stores the session for future logins until the user logs out.
 
-This login mechanism ensures secure and convenient access, removing the need for traditional username-password credentials.
+This login mechanism ensures secure and convenient access, removing the need for traditional username-password credentials. I used Appwrite to configure this functionality in my app
 
-2. Product Browsing & Search
+# 2. Product Browsing & Search
 
 Users can browse through various product categories and search for specific items.
 
