@@ -3,8 +3,11 @@
 Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I designed for famous Youtuber - [Microwave nagal](https://www.youtube.com/@MicrowaveNagal) to enable him to sell his products online all over India. Maxmol integrates several essential functionalities like Wishlist, Cart Management, Order Tracking, Razorpay Payment Gateway, and OTP-based Authentication. This README provides an overview of the app’s features and explains its functionality in detail.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/95a8f80f-8c34-4e8d-bf8b-d86c0c9a3849" alt="Screenshot_1" width="300"/>
-  <img src="https://github.com/user-attachments/assets/25a5d8e2-61a2-4f9a-a4a2-d675417c7d36" alt="Screenshot_2" width="300"/>
+  <img src="https://github.com/user-attachments/assets/95a8f80f-8c34-4e8d-bf8b-d86c0c9a3849" alt="Screenshot_1" width="200" height="400"/>
+  <img src="https://github.com/user-attachments/assets/25a5d8e2-61a2-4f9a-a4a2-d675417c7d36" alt="Screenshot_2" width="200" height="400"/>
+  <img src="https://github.com/user-attachments/assets/e0c451ac-3820-46d1-bdd9-62bdbeaffcf1" alt="Screenshot_3" width="200" height="400"/>
+  <img src="https://github.com/user-attachments/assets/01ba0eda-c050-4547-87c4-b3229b9c3d19" alt="Screenshot_4" width="200" height="400"/>
+  <img src="https://github.com/user-attachments/assets/90fd8454-1921-494d-97ee-ed1d61858494" alt="Screenshot_5" width="200" height="400"/>
 </p>
 
 
