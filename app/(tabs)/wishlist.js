@@ -6,36 +6,29 @@ import {
   Image,
   RefreshControl,
   Dimensions,
+  Alert,
 } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
-import {
-  checkWishList,
-  getSingleProduct,
-  modifyWishList,
-  removeFromWishList,
-} from "@/lib/appwrite";
+import React, { useEffect, useState } from "react";
+import { getSingleProduct, modifyWishList } from "@/lib/appwrite";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import HorizontalCard from "@/components/HorizontalCard";
 import { Heart } from "@/components/Svgs";
-import { useFocusEffect } from "@react-navigation/native";
 import EmptyWL from "../../assets/emptyWL2.png";
 import LoadingScreen from "@/components/LoadingScreen";
 import { router } from "expo-router";
 import CustomAlert from "@/components/CustomAlert";
 
 const wishlist = () => {
-  const { user, setUser } = useGlobalContext();
+  const { width } = Dimensions.get("window");
+
+  const { user, setUser, fetchUserData } = useGlobalContext();
+
   const [wishList, setWishList] = useState(null);
   const [items, setItems] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userNum, setUserNum] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
   const [showRemovedAlert, setShowRemovedAlert] = useState(false);
-  const { width } = Dimensions.get("window");
-
-  const handleShowAlert = () => {
-    setShowAlert(true);
-  };
 
   const handleShowRemovedAlert = () => {
     setShowRemovedAlert(true);
@@ -50,10 +43,12 @@ const wishlist = () => {
 
   const onRefresh = () => {
     setLoading(true);
+
     setTimeout(() => {
       if (user) {
         setUserNum(user);
         setWishList(user.wishlist);
+
         if (user.wishlist.length > 0) {
           fetchProducts(user.wishlist);
         } else {
@@ -61,6 +56,7 @@ const wishlist = () => {
           setLoading(false);
         }
       }
+
       setLoading(false);
     }, 100); // Simulate a 2 second delay for the refresh
   };
@@ -68,16 +64,19 @@ const wishlist = () => {
   const fetchProducts = async (wishListArray) => {
     try {
       let updatedItems = [];
+
       for (let i = 0; i < wishListArray.length; i++) {
         const resp = await getSingleProduct(wishListArray[i]);
+
         if (resp.status) {
           updatedItems.push(resp.data);
         } else if (!resp.status) {
-          return handleShowAlert();
+          Alert.alert("Some products are unavailable", resp.error);
+          fetchUserData();
         }
       }
+
       setItems(updatedItems);
-      console.log(updatedItems, "items");
     } catch (error) {
       alert(error);
     } finally {
@@ -87,9 +86,11 @@ const wishlist = () => {
 
   const removeWL = async (userId, productId) => {
     setLoading(true);
+
     try {
       let updatedList = wishList.filter((item) => item !== productId);
       await modifyWishList(userId, updatedList);
+
       setUser({ ...userNum, wishlist: updatedList });
     } catch (error) {
       alert(error);
@@ -103,8 +104,8 @@ const wishlist = () => {
     if (user) {
       setUserNum(user);
       setWishList(user.wishlist);
+
       if (user.wishlist.length > 0) {
-        console.log("fetched products in WL");
         fetchProducts(user.wishlist);
       } else {
         setItems(null);
@@ -115,27 +116,8 @@ const wishlist = () => {
     }
   }, [user]);
 
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     if (user) {
-  //       console.log(user.wishlist);
-  //       setUserNum(user);
-  //       setWishList(user.wishlist);
-  //       if (user.wishlist.length > 0) {
-  //         fetchProducts(user.wishlist);
-  //       } else {
-  //         setItems(null);
-  //         setLoading(false);
-  //       }
-  //     } else {
-  //       setLoading(false);
-  //     }
-  //   }, [user])
-  // );
-
   if (loading) return <LoadingScreen />;
-
-  if (!loading && !items) {
+  else if (!items) {
     return (
       <View className="bg-white w-full h-full">
         <View className=" flex justify-center items-center relative">

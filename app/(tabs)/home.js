@@ -24,9 +24,11 @@ import NetInfo from "@react-native-community/netinfo";
 import { Back, Forward } from "@/components/Svgs";
 
 const home = () => {
+  const limit = 10;
+  const { width } = Dimensions.get("window");
+
   const [products, setProducts] = useState([]);
   const [userNum, setUserNum] = useState();
-  const limit = 6;
   const [offset, setOffset] = useState(0);
   const [totalProducts, setTotalProducts] = useState(0);
   const [categories, setCategories] = useState([]);
@@ -35,17 +37,15 @@ const home = () => {
   const [loading, setLoading] = useState(true);
   const fetchCalledRef = useRef(false);
   const flatListRef = useRef(null);
-  const { user, networkState } = useGlobalContext();
+  const { user } = useGlobalContext();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [categoriesScrollOffset, setCategoriesScrollOffset] = useState(0);
-  const { width } = Dimensions.get("window");
 
   const numColumns = width > 700 ? 3 : 2;
 
   const onRefresh = () => {
     setLoading(true);
     setProducts(null);
-
     setTimeout(() => {
       fetchMiscData();
       getCategoriesData();
@@ -73,7 +73,6 @@ const home = () => {
       const res = await getMiscellaneousData();
       if (res.status) {
         setBannerImg(res.data.bannerImages);
-        console.log(res.data.bannerImages, "res.bannerImages");
       }
     } catch (error) {
       alert(error);
@@ -90,6 +89,7 @@ const home = () => {
         gst: 0,
         discount: 0,
       };
+
       let catData = [allProd, ...res.data];
       setCategories(catData);
     } else {
@@ -98,97 +98,100 @@ const home = () => {
   };
 
   const loadMoreProductsData = async () => {
-    if (!loading) {
-      console.log(offset, "entered fetch More DATA");
-      let currOffset = offset;
-      // This logic is must for infinite scrolling
-      if (currOffset >= totalProducts) {
-        setOffset(0);
-        currOffset = 0;
-      }
-      if (selectedCategory === "ALL") {
-        try {
-          console.log("fetched All Products more Data");
-          const res = await getAllVisibleProducts(limit, currOffset);
-          if (res.status) {
-            let updatedProd = [...products, ...res.data];
-            setProducts(updatedProd);
-            setOffset((prev) => prev + limit);
-          }
-        } catch (error) {
-          alert(res.error);
+    if (loading) return;
+
+    let currOffset = offset;
+    // This logic is must for infinite scrolling
+    if (currOffset >= totalProducts) {
+      setOffset(0);
+      currOffset = 0;
+    }
+
+    if (selectedCategory === "ALL") {
+      try {
+        const res = await getAllVisibleProducts(limit, currOffset);
+        if (res.status) {
+          let updatedProd = [...products, ...res.data];
+          setProducts(updatedProd);
+          setOffset((prev) => prev + limit);
         }
-      } else {
-        try {
-          console.log("fetched Selected Category more Data");
-          const res = await getAllVisibleProductOfSingleCategory(
-            limit,
-            currOffset,
-            selectedCategory
-          );
-          if (res.status === true) {
-            let updatedProd = [...products, ...res.data];
-            setProducts(updatedProd);
-            setOffset((prev) => prev + limit);
-          }
-        } catch (error) {}
+      } catch (error) {
+        alert(res.error);
+      }
+    } else {
+      try {
+        const res = await getAllVisibleProductOfSingleCategory(
+          limit,
+          currOffset,
+          selectedCategory
+        );
+
+        if (res.status) {
+          let updatedProd = [...products, ...res.data];
+          setProducts(updatedProd);
+          setOffset((prev) => prev + limit);
+        }
+      } catch (error) {
+        Alert.alert(`error`, error);
       }
     }
   };
 
   const selectOneCategory = async (id) => {
-    if (!loading) {
-      if (id !== "ALL") {
-        try {
-          setOffset(limit); // this is async op. seting it for future
-          let currOffset = 0;
-          setSelectedCategory(id);
-          setLoading(true);
-          const res = await getAllVisibleProductOfSingleCategory(
-            limit,
-            currOffset,
-            id
-          );
-          if (res.status) {
-            setProducts(res.data);
-            setTotalProducts(res.totalPages);
-          }
-        } catch (error) {
-          alert(error);
-        } finally {
-          setLoading(false);
+    if (loading) return;
+
+    if (id !== "ALL") {
+      try {
+        setOffset(limit); // this is async op. seting it for future
+        setSelectedCategory(id);
+        setLoading(true);
+
+        let currOffset = 0;
+        const res = await getAllVisibleProductOfSingleCategory(
+          limit,
+          currOffset,
+          id
+        );
+
+        if (res.status) {
+          setProducts(res.data);
+          setTotalProducts(res.totalPages);
         }
-      } else {
-        try {
+      } catch (error) {
+        alert(error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      try {
+        setOffset(limit);
+        setSelectedCategory("ALL");
+        setLoading(true);
+
+        let currOffset = 0;
+        const res = await getAllVisibleProducts(limit, currOffset);
+
+        if (res.status) {
+          setProducts(res.data);
+          setTotalProducts(res.totalPages);
           setOffset(limit);
-          let currOffset = 0;
-          setSelectedCategory("ALL");
-          setLoading(true);
-          const res = await getAllVisibleProducts(limit, currOffset);
-          if (res.status) {
-            setProducts(res.data);
-            setTotalProducts(res.totalPages);
-            setOffset(limit);
-          }
-        } catch (error) {
-          alert(error);
-        } finally {
-          setLoading(false);
         }
+      } catch (error) {
+        alert(error);
+      } finally {
+        setLoading(false);
       }
     }
     //setProducts(products.filter((item) => item.category === name));
   };
 
-  //TODO If user is OTP verified but has closed app during name, add a box to update name here also
   const fetchData = () => {
     if (products.length === 0) {
-      console.log("fetch MiscData & ProductData");
       fetchMiscData();
       getProductData();
     }
+
     if (categories.length === 0) {
-      console.log("get CategoriesData");
       getCategoriesData();
     }
   };
@@ -197,7 +200,6 @@ const home = () => {
     if (state.isConnected && !fetchCalledRef.current) {
       fetchCalledRef.current = true;
       setTimeout(() => {
-        console.log("networkEventListner api call");
         fetchData();
       }, 600);
     }
@@ -205,7 +207,6 @@ const home = () => {
 
   useEffect(() => {
     if (user) {
-      console.log("user in Home");
       setUserNum(user.phone);
     }
   }, [user]);
@@ -213,7 +214,6 @@ const home = () => {
   const handleCategorySelect = (item, index) => {
     setSelectedCategoryIndex(index);
     selectOneCategory(item.$id);
-    console.log(index);
   };
 
   const handleScrollRight = () => {
@@ -330,7 +330,7 @@ const home = () => {
                 data={products}
                 showsVerticalScrollIndicator={false}
                 onEndReached={() => loadMoreProductsData()}
-                onEndReachedThreshold={0.7}
+                onEndReachedThreshold={0.8}
                 ListFooterComponent={
                   <ActivityIndicator size={"large"} color={"black"} />
                 }
