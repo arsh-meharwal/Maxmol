@@ -114,45 +114,16 @@ The Razorpay integration ensures fast, secure, and reliable payment processing, 
 
 **Code - App/(screens)/paymentSelect.js**
 
-## 7. User Profile & Order History
-
-Each user has access to their profile, where they can manage their account details and view their past orders.
-
-Key Functionalities:
-
-	•	Profile Information: Users can update their profile details like name, phone number, and address.
-	•	Order History: The profile page displays a user’s previous orders with full details, including order items, prices, and statuses.
-	•	Address Management: Users can manage their saved addresses for future orders.
-
-App Structure
-
-The app follows a clean and modular architecture, separating concerns into different components and services.
-
-Main Components:
-
-	1.	Authentication Module
-	•	Handles user login, OTP verification, and session management.
-	2.	Product Module
-	•	Manages product browsing, search, categories, and product details.
-	3.	Wishlist Module
-	•	Manages the add/remove functionality for Wishlist items.
-	4.	Cart Module
-	•	Handles adding, removing, and updating products in the Cart.
-	5.	Order Module
-	•	Manages order placement, status tracking, and order history.
-	6.	Payment Module
-	•	Integrates with Razorpay for payment processing.
-
-State Management
+## 7. State Management
 
 Maxmol uses Context API, ensuring that user authentication, cart, and orders are properly handled across different components of the app.
 
-# Availability - The App is globally available on PlayStore.
+**Availability - The App is globally available on PlayStore.**
 
-Tech Stack
+**Tech Stack**
 
 	•	React Native: Cross-platform mobile development framework.
-	•	Context API/Redux: For state management.
-	•	Firebase (or other backend): For user authentication and OTP verification.
+	•	Context API: For state management.
+	•	Appwrite: For user authentication, OTP verification, Product database 
 	•	Razorpay: For handling secure online payments.
-	•	Appwrite/Custom Backend: To manage data storage for products, orders, and user information.
+	•	NativeWind: For Styling of elements
