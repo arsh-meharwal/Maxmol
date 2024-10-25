@@ -25,6 +25,7 @@ Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I
 	7.	User Profile & Order History
 	8.	Search History
 	9.	All encompassing Admin Panel
+	10.	Product Review & Stars
  
 
 ## 1. User Authentication (Login via OTP)
