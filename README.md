@@ -26,6 +26,19 @@ Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I
 1. Infinite Scrolling
 2. Product Browsing & Search
 
+### 2. Wishlist
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d5a834c8-9c33-4fc8-960b-7483439c14f3" alt="Screenshot_1" width="200" height="450"/>
+</p>
+
+### 3. Cart
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ac85104e-5328-4822-ab36-f534164647eb" alt="Screenshot_1" width="200" height="450"/>
+</p>
+
+
 
 
 
