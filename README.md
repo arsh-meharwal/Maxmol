@@ -15,15 +15,17 @@ Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I
 
 ## Screens
 
-# Home
+### Home
 <p align="center">
   <img src="https://github.com/user-attachments/assets/68f5023f-064a-44fd-8bff-665c5cd55cce" alt="Screenshot_1" width="200" height="450"/>
   <img src="https://github.com/user-attachments/assets/4e69f918-2b7e-4b68-8952-b3ca3c2e4555" alt="Screenshot_1" width="200" height="450"/>
   <img src="https://github.com/user-attachments/assets/bdb4f717-becd-44ee-963c-85f797997f23" alt="Screenshot_1" width="200" height="450"/>
 </p>
 
-Key Features - 	1.	Infinite Scrolling
-	 	2.	Product Browsing & Search
+Key Features-
+   
+	1.	Infinite Scrolling
+	2.	Product Browsing & Search
 
 
 
