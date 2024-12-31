@@ -1,4 +1,4 @@
-# Maxmol E-Commerce Mobile App [Google Play](https://play.google.com/store/apps/details?id=com.anonymous.ecommerce)
+# Maxmol  [Google Play](https://play.google.com/store/apps/details?id=com.anonymous.ecommerce)
 
 Welcome to Maxmol, a fully-featured React Native e-commerce mobile application I designed for famous Youtuber - [Microwave nagal](https://www.youtube.com/@MicrowaveNagal) to enable him to sell his products online all over India. Maxmol integrates several essential functionalities like Wishlist, Cart Management, Order Tracking, Razorpay Payment Gateway, and OTP-based Authentication. This README provides an overview of the app’s features and explains its functionality in detail.
 
